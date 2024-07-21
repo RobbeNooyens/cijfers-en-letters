@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cijfers en Letters Spel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span id="modal-close" class="modal-close">&times;</span>
+        <p>De tijd is om!</p>
+    </div>
+</div>
+<div class="container">
+    <h1>Cijfers en Letters</h1>
+    <div class="game-section">
+        <button id="generate-letters">Genereer Letters</button>
+        <div id="letters-output" class="output"></div>
+    </div>
+    <div class="game-section">
+        <button id="generate-numbers">Genereer Cijfers</button>
+        <div id="numbers-output" class="output"></div>
+        <div id="target-output" class="output"></div>
+    </div>
+    <div class="scoreboard">
+        <h2>Scorebord</h2>
+        <table id="scoreboard-table">
+            <tr>
+                <th>Speler</th>
+                <th>Score</th>
+                <th>Acties</th>
+            </tr>
+            <tr class="player-row">
+                <td contenteditable="true" class="player-name">Speler 1</td>
+                <td class="player-score">0</td>
+                <td>
+                    <button class="increment-score">+</button>
+                    <button class="decrement-score">-</button>
+                    <button class="delete-player">&#128465;</button>
+                </td>
+            </tr>
+            <tr class="player-row">
+                <td contenteditable="true" class="player-name">Speler 2</td>
+                <td class="player-score">0</td>
+                <td>
+                    <button class="increment-score">+</button>
+                    <button class="decrement-score">-</button>
+                    <button class="delete-player">&#128465;</button>
+                </td>
+            </tr>
+        </table>
+        <button id="add-player">Speler Toevoegen</button>
+    </div>
+    <div class="timer-section">
+        <label for="timer-slider">Timer (seconden):</label>
+        <input type="range" id="timer-slider" min="30" max="300" step="30" value="60">
+        <span id="timer-value">60</span>
+        <div id="timer" class="output">Timer: 60</div>
+        <button id="reset-timer">Reset Timer</button>
+    </div>
+</div>
+<script src="scripts.js"></script>
+</body>
+</html>
