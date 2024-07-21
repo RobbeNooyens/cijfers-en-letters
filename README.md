@@ -22,6 +22,8 @@ Het scorebord houdt de scores van de spelers bij. Spelers kunnen punten toevoege
 
 ## Gebruik van de Webapplicatie
 
+Surf naar https://robbenooyens.github.io/cijfers-en-letters/.
+
 1. **Start een ronde met letters** door op de knop "Genereer Letters" te klikken. Je ziet een reeks van 9 willekeurige letters.
 2. **Start een ronde met cijfers** door op de knop "Genereer Cijfers" te klikken. Je ziet een reeks van 6 willekeurige cijfers en een doelgetal.
 3. **Stel de timer in** met de schuifbalk onderaan de pagina. De timer wordt automatisch gestart bij het genereren van een nieuwe reeks letters of cijfers.
