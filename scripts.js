@@ -12,24 +12,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreboardTable = document.getElementById('scoreboard-table');
     const modal = document.getElementById('modal');
     const modalClose = document.getElementById('modal-close');
+    const switchNlButton = document.getElementById('switch-nl');
+    const switchFrButton = document.getElementById('switch-fr');
 
     let timerInterval;
     let timeLeft = parseInt(timerSlider.value);
     let isTimerRunning = false;
+    let currentLanguage = 'NL';
 
-    const letterDistribution = {
-        'A': 7.49, 'B': 1.58, 'C': 1.24, 'D': 5.93, 'E': 18.91,
-        'F': 0.81, 'G': 3.40, 'H': 2.38, 'I': 6.50, 'J': 1.46,
-        'K': 2.25, 'L': 3.57, 'M': 2.21, 'N': 10.03, 'O': 6.06,
-        'P': 1.57, 'Q': 0.01, 'R': 6.41, 'S': 3.73, 'T': 6.79,
-        'U': 1.99, 'V': 2.85, 'W': 1.52, 'X': 0.04, 'Y': 0.03,
-        'Z': 1.39
+    const letterDistributions = {
+        'NL': {
+            'A': 7.49, 'B': 1.58, 'C': 1.24, 'D': 5.93, 'E': 18.91,
+            'F': 0.81, 'G': 3.40, 'H': 2.38, 'I': 6.50, 'J': 1.46,
+            'K': 2.25, 'L': 3.57, 'M': 2.21, 'N': 10.03, 'O': 6.06,
+            'P': 1.57, 'Q': 0.01, 'R': 6.41, 'S': 3.73, 'T': 6.79,
+            'U': 1.99, 'V': 2.85, 'W': 1.52, 'X': 0.04, 'Y': 0.03,
+            'Z': 1.39
+        },
+        'FR': {
+            'A': 7.636, 'B': 0.901, 'C': 3.260, 'D': 3.669, 'E': 14.715,
+            'F': 1.066, 'G': 0.866, 'H': 0.737, 'I': 7.529, 'J': 0.545,
+            'K': 0.049, 'L': 5.456, 'M': 2.968, 'N': 7.095, 'O': 5.378,
+            'P': 3.021, 'Q': 1.362, 'R': 6.553, 'S': 7.948, 'T': 7.244,
+            'U': 6.311, 'V': 1.628, 'W': 0.114, 'X': 0.387, 'Y': 0.308,
+            'Z': 0.136
+        }
     };
 
     const generateLetters = () => {
         let result = '';
         for (let i = 0; i < 9; i++) {
-            result += weightedRandom(letterDistribution) + ' ';
+            result += weightedRandom(letterDistributions[currentLanguage]) + ' ';
         }
         lettersOutput.textContent = result.trim();
         resetTimer();
@@ -126,6 +139,17 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'none';
     };
 
+    const switchLanguage = (language) => {
+        currentLanguage = language;
+        if (language === 'NL') {
+            switchNlButton.classList.add('selected');
+            switchFrButton.classList.remove('selected');
+        } else {
+            switchNlButton.classList.remove('selected');
+            switchFrButton.classList.add('selected');
+        }
+    };
+
     lettersButton.addEventListener('click', generateLetters);
     numbersButton.addEventListener('click', generateNumbers);
     resetTimerButton.addEventListener('click', resetTimer);
@@ -138,5 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
     addPlayerButton.addEventListener('click', addPlayer);
     modalClose.addEventListener('click', closeModal);
 
+    switchNlButton.addEventListener('click', () => switchLanguage('NL'));
+    switchFrButton.addEventListener('click', () => switchLanguage('FR'));
+
     updateScores();
+    switchLanguage('NL'); // Set default language to Dutch
 });
